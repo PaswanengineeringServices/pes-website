@@ -2,234 +2,191 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Paswan Engineering Services - Premium</title>
+<title>PES - Paswan Engineering Services | Industrial Experts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 <style>
   :root {
     --primary: #0d3b66;
     --secondary: #25D366;
-    --light-bg: #f8fbff;
+    --accent: #ffcc00;
+    --light-bg: #f4f7fa;
   }
 
-  body { margin:0; font-family:'Poppins', sans-serif; background: var(--light-bg); color:#333; scroll-behavior: smooth; overflow-x: hidden; }
+  body { margin:0; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--light-bg); color:#333; scroll-behavior: smooth; overflow-x: hidden; }
 
   /* Navigation */
   header {
-    background: rgba(13, 59, 102, 0.98);
-    padding: 10px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: rgba(13, 59, 102, 0.95);
+    padding: 12px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
   }
-
-  .logo-box img { height: 75px; border-radius: 10px; transition: 0.3s; }
-  .logo-box img:hover { transform: scale(1.05); }
-
-  nav a { color: white; text-decoration: none; margin-left: 25px; font-weight: 500; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+  .logo-box img { height: 70px; border-radius: 8px; transition: 0.3s; background: white; padding: 2px; }
+  nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 14px; text-transform: uppercase; }
   nav a:hover { color: var(--secondary); }
 
-  .menu-toggle { display: none; font-size: 30px; color: white; cursor: pointer; }
-
-  /* Hero Section with Parallax */
+  /* Hero Section */
   .hero {
-    height: 90vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pcs2.jpg') no-repeat center center/cover;
+    height: 95vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('pcs2.jpg') no-repeat center center/cover;
     background-attachment: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
+    display: flex; align-items: center; justify-content: center; color: white; text-align: center;
   }
+  .pes-badge {
+    font-size: 1.8rem; font-weight: 900; background: var(--secondary);
+    display: inline-block; padding: 5px 30px; border-radius: 4px;
+    margin-bottom: 20px; color: var(--primary); letter-spacing: 8px;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+  }
+  .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 15px; text-shadow: 2px 2px 15px rgba(0,0,0,0.5); }
 
-  .hero-content h1 { font-size: clamp(2.5rem, 10vw, 4rem); margin-bottom: 15px; font-weight: 800; }
-  .hero-content p { font-size: 1.3rem; margin-bottom: 30px; color: #ddd; }
+  /* Sections */
+  section { padding: 100px 8%; text-align: center; }
+  .section-title { font-size: 2.5rem; color: var(--primary); margin-bottom: 60px; position: relative; font-weight: 800; }
+  .section-title::after { content:''; width: 70px; height: 5px; background: var(--secondary); position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); }
+
+  /* Card Display */
+  .card-display {
+    max-width: 600px; margin: 0 auto; padding: 20px;
+    background: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  }
+  .card-display img { width: 100%; border-radius: 10px; border: 1px solid #ddd; }
+
+  /* Floating Contacts */
+  .contact-tools { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; gap: 15px; }
+  .tool-btn { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s; text-decoration: none; font-size: 24px; }
+  .wa { background: #25d366; }
+  .call { background: var(--primary); }
 
   /* Buttons */
   .btn {
-    padding: 15px 35px;
-    background: var(--secondary);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
-    transition: 0.4s ease;
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+    padding: 16px 40px; background: var(--secondary); color: white; border: none;
+    border-radius: 50px; cursor: pointer; font-weight: bold; text-decoration: none;
+    display: inline-block; transition: 0.4s;
   }
-  .btn:hover { background: #1ebd54; transform: translateY(-3px); box-shadow: 0 12px 25px rgba(37, 211, 102, 0.5); }
+  .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-  /* Sections */
-  section { padding: 100px 10%; text-align: center; }
-  .section-title { font-size: 2.5rem; color: var(--primary); margin-bottom: 50px; position: relative; }
-  .section-title::after { content:''; width: 80px; height: 5px; background: var(--secondary); position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
-
-  /* Founder Card */
-  .owner-card { 
-    background: white; padding: 40px; border-radius: 30px; 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05); 
-    display: inline-block; width: 100%; max-width: 400px;
-    transition: 0.3s;
-  }
-  .owner-card:hover { transform: translateY(-10px); }
-  .owner-img { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 10px solid #f0f4f8; margin-bottom: 25px; }
-
-  /* Project Gallery */
-  .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-  .project-item { position: relative; overflow: hidden; border-radius: 20px; height: 280px; }
-  .project-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-  .project-item:hover img { transform: scale(1.1) rotate(2deg); }
-
-  /* WhatsApp Floating */
-  .whatsapp-float {
-    position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
-    background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center;
-    font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 100;
-    display: flex; align-items: center; justify-content: center; text-decoration: none;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-  }
-
-  /* Form Design */
-  .form-container { background: white; padding: 50px; border-radius: 30px; box-shadow: 0 15px 50px rgba(0,0,0,0.08); max-width: 600px; margin: 0 auto; }
-  input { width: 100%; padding: 15px; margin-bottom: 20px; border: 2px solid #eee; border-radius: 12px; transition: 0.3s; font-size: 16px; }
-  input:focus { border-color: var(--secondary); outline: none; background: #f9fffb; }
-
-  footer { background: var(--primary); color: white; padding: 60px 10% 20px; text-align: center; }
+  footer { background: #071c2f; color: white; padding: 80px 10% 30px; text-align: center; }
+  footer a { color: var(--secondary); text-decoration: none; }
 
   @media(max-width: 768px) {
-    nav { display: none; flex-direction: column; position: absolute; top: 95px; left: 0; width: 100%; background: var(--primary); padding: 30px 0; }
+    nav { display: none; flex-direction: column; position: absolute; top: 90px; left: 0; width: 100%; background: var(--primary); padding: 20px 0; }
     nav.active { display: flex; }
-    nav a { margin: 15px 0; font-size: 18px; }
-    .menu-toggle { display: block; }
-    .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
   }
 </style>
 </head>
 <body>
 
-<a href="https://wa.me/919771860886?text=Hi Atul, I want to inquire about Paswan Engineering Services." class="whatsapp-float" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35">
-</a>
+<div class="contact-tools">
+  <a href="tel:9771860886" class="tool-btn call">📞</a>
+  <a href="https://wa.me/919771860886?text=Hi Atul, I want to discuss a project with PES." class="tool-btn wa" target="_blank">💬</a>
+</div>
 
 <header>
-  <div class="logo-box">
-    <img src="pes logo1.png" alt="PES Logo">
-  </div>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <div class="logo-box"><img src="pes logo1.png" alt="PES"></div>
+  <div style="color:white; font-size:28px; cursor:pointer;" onclick="toggleMenu()">☰</div>
   <nav id="navMenu">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
+    <a href="#services">Services</a>
+    <a href="#about">Founder</a>
+    <a href="#visiting-card">Visiting Card</a>
+    <a href="#projects">Work</a>
     <a href="#register">Register</a>
-    <a href="#admin">Admin</a>
   </nav>
 </header>
 
 <section class="hero">
   <div class="hero-content" data-aos="zoom-in">
+    <div class="pes-badge">PES</div>
     <h1>Paswan Engineering Services</h1>
-    <p>Constructing Excellence with Precision & Innovation</p>
-    <a href="#register" class="btn">Start Your Project</a>
+    <p>Mechanical • Pipeline • Fabrication • Maintenance</p>
+    <a href="#services" class="btn">Our Expertise</a>
+  </div>
+</section>
+
+<section id="services">
+  <h2 class="section-title" data-aos="fade-up">Industrial Services</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+    <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);" data-aos="fade-up">
+      <h3>Industrial Piping</h3>
+      <p>Specialists in high-pressure steam, chemical, and utility pipelines.</p>
+    </div>
+    <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);" data-aos="fade-up" data-aos-delay="100">
+      <h3>Structural Fabrication</h3>
+      <p>Precision welding and heavy-duty mechanical structure fabrication.</p>
+    </div>
+    <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);" data-aos="fade-up" data-aos-delay="200">
+      <h3>Plant Maintenance</h3>
+      <p>Expert shutdown and annual maintenance services for zero downtime.</p>
+    </div>
   </div>
 </section>
 
 <section id="about">
-  <h2 class="section-title" data-aos="fade-up">Our Leadership</h2>
-  <div class="owner-card" data-aos="flip-left">
-    <img src="Pes Owner.jpg" class="owner-img" alt="Atul Kumar Paswan">
-    <h3>Atul Kumar Paswan</h3>
-    <p style="color: #666;">Managing Director</p>
-    <select onchange="changeLanguage(this.value)" style="border-radius:20px; padding:5px 15px; border:1px solid #ddd;">
-      <option value="en">English</option>
-      <option value="hi">Hindi</option>
-    </select>
+  <h2 class="section-title" data-aos="fade-up">Leadership</h2>
+  <div style="background: white; padding: 40px; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); max-width: 500px; margin: 0 auto;" data-aos="flip-left">
+    <img src="Pes Owner.jpg" style="width:200px; height:200px; border-radius:50%; border:6px solid var(--secondary); object-fit:cover;">
+    <h3 style="margin-top:20px;">Atul Kumar Paswan</h3>
+    <p><b>Managing Director</b></p>
+    <p style="color:#555;">Industrial expert driving precision and safety in every project.</p>
   </div>
 </section>
 
-<section id="projects" style="background: #fff;">
+<section id="visiting-card" style="background: #fff;">
+  <h2 class="section-title" data-aos="fade-up">Digital Business Card</h2>
+  <div class="card-display" data-aos="zoom-in">
+    <img src="visiting card.jpg" alt="PES Business Card">
+    <div style="margin-top:20px;">
+      <a href="visiting card.jpg" download class="btn" style="background: var(--primary);">Save Contact Card</a>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
   <h2 class="section-title" data-aos="fade-up">Work Portfolio</h2>
-  <div class="project-grid">
-    <div class="project-item" data-aos="fade-up" data-aos-delay="100"><img src="Pcs 1.jpg"></div>
-    <div class="project-item" data-aos="fade-up" data-aos-delay="200"><img src="pcs2.jpg"></div>
-    <div class="project-item" data-aos="fade-up" data-aos-delay="300"><img src="pcs3.jpg"></div>
-    <div class="project-item" data-aos="fade-up" data-aos-delay="400"><img src="PCS 4.jpg"></div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+    <img src="Pcs 1.jpg" style="width:100%; border-radius:15px; height:250px; object-fit:cover;" data-aos="zoom-in">
+    <img src="pcs2.jpg" style="width:100%; border-radius:15px; height:250px; object-fit:cover;" data-aos="zoom-in">
+    <img src="pcs3.jpg" style="width:100%; border-radius:15px; height:250px; object-fit:cover;" data-aos="zoom-in">
+    <img src="PCS 4.jpg" style="width:100%; border-radius:15px; height:250px; object-fit:cover;" data-aos="zoom-in">
   </div>
 </section>
 
 <section id="register">
-  <h2 class="section-title" data-aos="fade-up">Registration</h2>
-  <div class="form-container" data-aos="fade-up">
-    <input type="text" id="name" placeholder="Full Name">
-    <input type="text" id="mobile" placeholder="Mobile Number">
-    <input type="text" id="skill" placeholder="Skill Type">
-    <button class="btn" style="width:100%;" onclick="registerWorker()">Submit Application</button>
-  </div>
-</section>
-
-<section id="admin">
-  <h2 class="section-title">Admin Dashboard</h2>
-  <button class="btn" onclick="loadWorkers()">View Database</button>
-  <div style="margin-top:30px; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-    <table style="width:100%; border-collapse: collapse;">
-      <thead style="background: var(--primary); color: white;">
-        <tr><th style="padding:15px;">Name</th><th>Mobile</th><th>Skill</th></tr>
-      </thead>
-      <tbody id="workerTable"></tbody>
-    </table>
+  <h2 class="section-title" data-aos="fade-up">Registration Portal</h2>
+  <div style="background:white; padding:40px; border-radius:25px; max-width:600px; margin:0 auto; box-shadow:0 15px 40px rgba(0,0,0,0.05);">
+    <input type="text" id="name" placeholder="Full Name" style="width:100%; padding:15px; margin-bottom:15px; border:1px solid #ddd; border-radius:10px;">
+    <input type="text" id="mobile" placeholder="Mobile Number" style="width:100%; padding:15px; margin-bottom:15px; border:1px solid #ddd; border-radius:10px;">
+    <input type="text" id="skill" placeholder="Skill Type (Welder, Fitter, etc.)" style="width:100%; padding:15px; margin-bottom:15px; border:1px solid #ddd; border-radius:10px;">
+    <button class="btn" onclick="register()" style="width:100%;">Submit Application</button>
   </div>
 </section>
 
 <footer>
-  <h3>PASWAN ENGINEERING SERVICES</h3>
-  <p>Industrial Pipeline | Mechanical | Fabrication</p>
-  <p style="margin-top:20px; opacity:0.6; font-size:12px;">© 2026 PES | Quality You Can Trust</p>
+  <div class="pes-badge" style="letter-spacing:4px; font-size:1.2rem;">PES</div>
+  <p><b>Paswan Engineering Services</b></p>
+  <p>📧 <a href="mailto:engineeringservicespes@gmail.com">engineeringservicespes@gmail.com</a></p>
+  <p>📞 <a href="tel:9771860886">+91 9771860886</a></p>
+  <div style="margin-top:40px; font-size:11px; opacity:0.5; border-top:1px solid #1a3a5a; padding-top:20px;">
+    © 2026 PES | Quality • Safety • Integrity
+  </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
   AOS.init({ duration: 1000, once: true });
-
   function toggleMenu() { document.getElementById("navMenu").classList.toggle("active"); }
-
-  function registerWorker() {
+  
+  function register() {
     const name = document.getElementById("name").value;
     const mobile = document.getElementById("mobile").value;
     const skill = document.getElementById("skill").value;
-    if(!name || !mobile || !skill) { alert("Kripya saari jankari bharein!"); return; }
-    let workers = JSON.parse(localStorage.getItem("pes_data")) || [];
-    workers.push({name, mobile, skill});
-    localStorage.setItem("pes_data", JSON.stringify(workers));
-    alert("Application Successfully Submitted!");
+    if(!name || !mobile || !skill) { alert("Please fill all details!"); return; }
+    let db = JSON.parse(localStorage.getItem("pes_final_db")) || [];
+    db.push({name, mobile, skill});
+    localStorage.setItem("pes_final_db", JSON.stringify(db));
+    alert("Application Submitted Successfully!");
     location.reload();
-  }
-
-  function loadWorkers() {
-    let workers = JSON.parse(localStorage.getItem("pes_data")) || [];
-    let table = document.getElementById("workerTable");
-    table.innerHTML = "";
-    if(workers.length === 0) {
-      table.innerHTML = "<tr><td colspan='3' style='padding:20px;'>No data available.</td></tr>";
-      return;
-    }
-    table.innerHTML = workers.map(w => `<tr><td style="padding:12px; border-bottom:1px solid #eee;">${w.name}</td><td>${w.mobile}</td><td>${w.skill}</td></tr>`).join('');
-  }
-
-  function changeLanguage(lang) {
-    const h1 = document.querySelector(".hero-content h1");
-    if(lang === 'hi') { h1.innerText = "पासवान इंजीनियरिंग सर्विसेज"; }
-    else { h1.innerText = "Paswan Engineering Services"; }
   }
 </script>
 </body>
