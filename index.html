@@ -10,39 +10,39 @@
   body { margin:0; font-family:'Segoe UI', sans-serif; background: var(--bg); overflow-x: hidden; scroll-behavior: smooth; }
   
   /* Navigation */
-  header { background: var(--p); padding: 10px 5%; display: flex; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+  header { background: var(--p); padding: 10px 5%; display: flex; align-items: center; position: sticky; top: 0; z-index: 1000; }
   .nav-toggle { font-size: 38px; color: var(--s); cursor: pointer; margin-right: 15px; }
   .logo-box img { height: 45px; background: white; padding: 2px; border-radius: 5px; }
   nav { display: none; flex-direction: column; position: absolute; top: 65px; left: 0; width: 100%; background: var(--p); text-align: center; }
   nav.active { display: flex; }
   nav a { color: white; text-decoration: none; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: bold; }
 
-  /* Hero & Headings */
-  section { padding: 40px 5%; text-align: center; }
-  .section-title { font-size: 24px; color: var(--p); margin-bottom: 25px; font-weight: 800; border-bottom: 3px solid var(--s); display: inline-block; padding-bottom: 5px; }
-  .hero { height: 55vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pcs2.jpg') center/cover; display: flex; align-items: center; justify-content: center; color: white; }
+  /* Hero & Slideshow */
+  .hero { height: 65vh; position: relative; display: flex; align-items: center; justify-content: center; color: white; text-align: center; overflow: hidden; }
+  .slide { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1s ease-in-out; z-index: -1; }
+  .slide.active { opacity: 1; }
+  .pes-badge { font-size: 1.2rem; font-weight: 900; background: var(--s); padding: 5px 20px; border-radius: 4px; color: var(--p); letter-spacing: 5px; margin-bottom: 15px; display: inline-block; }
 
-  /* MD Section */
+  /* Section Styling */
+  section { padding: 40px 5%; text-align: center; }
+  .section-title { font-size: 24px; color: var(--p); margin-bottom: 25px; font-weight: 800; border-bottom: 3px solid var(--s); display: inline-block; }
+
+  /* Managing Director */
   .leader-card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 350px; margin: 0 auto; }
   .leader-img { width: 140px; height: 140px; border-radius: 50%; border: 4px solid var(--s); object-fit: cover; margin-bottom: 10px; }
 
-  /* Work Photos Gallery */
-  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
-  .work-grid img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 2px solid white; }
-
-  /* Identity: Side-by-Side */
+  /* Identity Side-by-Side */
   .id-row { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
   .id-item { width: 47%; background: white; padding: 8px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
   .id-item img { width: 100%; border-radius: 5px; height: 110px; object-fit: cover; }
   .id-item p { font-size: 10px; font-weight: bold; margin: 5px 0; color: var(--p); text-transform: uppercase; }
 
-  /* Form & Floating Tools */
-  input { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-  .btn { padding: 12px 25px; background: var(--s); color: white; border: none; border-radius: 8px; font-weight: bold; width: 100%; cursor: pointer; }
+  /* Float Tools */
   .contact-tools { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
   .tool-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; }
   
   footer { background: #071c2f; color: white; padding: 30px; text-align: center; font-size: 13px; }
+  input { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
 </style>
 </head>
 <body>
@@ -56,36 +56,31 @@
   <div class="nav-toggle" onclick="toggleMenu()">☰</div>
   <div class="logo-box"><img src="pes logo1.png" alt="PES"></div>
   <nav id="navMenu">
-    <a href="#about" onclick="toggleMenu()">Founder</a>
-    <a href="#work" onclick="toggleMenu()">Our Work</a>
+    <a href="#about" onclick="toggleMenu()">Managing Director</a>
     <a href="#identity" onclick="toggleMenu()">Identity</a>
-    <a href="#register" onclick="toggleMenu()">Register</a>
+    <a href="#register" onclick="toggleMenu()">Worker Portal</a>
   </nav>
 </header>
 
 <section class="hero">
-  <div data-aos="fade-up">
-    <h1 style="font-size: 26px; margin:0;">Paswan Engineering Services</h1>
-    <p style="color:var(--s); font-weight:bold; letter-spacing:1px;">INDUSTRIAL EXCELLENCE</p>
+  <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pcs2.jpg');"></div>
+  <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Pcs 1.jpg');"></div>
+  <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pcs3.jpg');"></div>
+  <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('PCS 4.jpg');"></div>
+  
+  <div style="z-index: 10;" data-aos="zoom-in">
+    <div class="pes-badge">PES</div>
+    <h1 style="font-size: 28px; margin:0;">Paswan Engineering Services</h1>
+    <p style="color:var(--s); font-weight:bold; letter-spacing:1px;">Quality • Safety • Integrity</p>
   </div>
 </section>
 
 <section id="about">
-  <h2 class="section-title">Managing Director</h2>
-  <div class="leader-card" data-aos="zoom-in">
+  <h2 class="section-title">Leadership</h2>
+  <div class="leader-card" data-aos="fade-up">
     <img src="Pes Owner.jpg" class="leader-img" alt="Atul Kumar Paswan">
     <h3 style="margin:5px 0; color:var(--p);">Atul Kumar Paswan</h3>
-    <p style="margin:0; font-weight:bold; color:var(--s); font-size:14px;">Founder & MD</p>
-  </div>
-</section>
-
-<section id="work" style="background:#fff;">
-  <h2 class="section-title">Project Gallery</h2>
-  <div class="work-grid">
-    <img src="Pcs 1.jpg" data-aos="flip-left">
-    <img src="pcs2.jpg" data-aos="flip-right">
-    <img src="pcs3.jpg" data-aos="flip-left">
-    <img src="PCS 4.jpg" data-aos="flip-right">
+    <p style="margin:0; font-weight:bold; color:var(--s);">Managing Director</p>
   </div>
 </section>
 
@@ -107,10 +102,10 @@
   <h2 class="section-title">Worker Portal</h2>
   <div style="max-width:350px; margin:0 auto; background:white; padding:20px; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.05);">
     <input type="text" id="name" placeholder="Full Name">
-    <input type="text" id="mobile" placeholder="Mobile (+91)">
-    <input type="text" id="skill" placeholder="Skill (e.g. Welder)">
+    <input type="text" id="mobile" placeholder="Mobile Number">
+    <input type="text" id="skill" placeholder="Skill (Welder/Fitter)">
     <input type="number" id="exp" placeholder="Experience (Years)">
-    <button class="btn" onclick="registerWorker()">SUBMIT APPLICATION</button>
+    <button onclick="registerWorker()" style="width:100%; padding:12px; background:var(--s); border:none; color:white; border-radius:8px; font-weight:bold;">SUBMIT APPLICATION</button>
   </div>
 </section>
 
@@ -123,28 +118,38 @@
   <p><b>Paswan Engineering Services</b></p>
   <p>📧 engineeringservicespes@gmail.com</p>
   <p>📞 +91 9771860886</p>
-  <p style="opacity:0.4; font-size:10px; margin-top:15px;">© 2026 PES | QUALITY FIRST</p>
+  <p style="opacity:0.4; font-size:10px; margin-top:15px;">© 2026 PES OFFICIAL</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-  AOS.init({ duration: 800 });
+  AOS.init();
   function toggleMenu() { document.getElementById("navMenu").classList.toggle("active"); }
+
+  // Slideshow Logic
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  function nextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }
+  setInterval(nextSlide, 3000); // 3 Seconds per slide
 
   function registerWorker() {
     const name = document.getElementById("name").value;
     const mobile = document.getElementById("mobile").value;
     const skill = document.getElementById("skill").value;
     const exp = document.getElementById("exp").value;
-    if(!name || !mobile) { alert("Please enter details!"); return; }
+    if(!name || !mobile) { alert("Details bhariye!"); return; }
     let db = JSON.parse(localStorage.getItem("pes_secure_db")) || [];
     db.push({name, mobile, skill, exp});
     localStorage.setItem("pes_secure_db", JSON.stringify(db));
-    alert("Application Submitted!"); location.reload();
+    alert("Success!"); location.reload();
   }
 
   function showPrivate() {
-    const pass = prompt("Enter Password:");
+    const pass = prompt("Password:");
     if(pass === "pes123") {
         let db = JSON.parse(localStorage.getItem("pes_secure_db")) || [];
         let html = `<table border="1" style="width:100%; background:white; font-size:12px; border-collapse:collapse;">
@@ -152,7 +157,7 @@
         html += db.map((w, i) => `<tr><td>${i+1}</td><td>${w.name}</td><td>${w.mobile}</td><td>${w.exp}</td></tr>`).join('');
         html += `</table>`;
         document.getElementById("tableContainer").innerHTML = html;
-    } else { alert("Access Denied!"); }
+    } else { alert("Wrong!"); }
   }
 </script>
 </body>
