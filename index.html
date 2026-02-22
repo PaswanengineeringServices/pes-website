@@ -1,240 +1,291 @@
-<!DOCTYPE html>
-<html>
+v<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Paswan Engineering Services</title>
+<meta charset="UTF-8">
+<title>Paswan Engineering Services - Premium</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <style>
-
 body{
-margin:0;
-font-family:Arial;
-background:#f4f8fc;
-color:#333;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f8fc;
+  color:#333;
 }
 
 /* ===== HEADER ===== */
-
 header{
-background:rgba(13,59,102,0.95);
-backdrop-filter:blur(10px);
-padding:15px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:sticky;
-top:0;
-z-index:1000;
-box-shadow:0 4px 20px rgba(0,0,0,0.2);
+  background:rgba(13,59,102,0.95);
+  backdrop-filter:blur(10px);
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 4px 20px rgba(0,0,0,0.2);
 }
 
 .logo-box img{
-height:80px;
-max-width:100%;
-object-fit:contain;
-transition:0.3s;
-}
-
-.logo-box img:hover{
-transform:scale(1.05);
+  height:80px;
 }
 
 nav{
-display:flex;
-align-items:center;
+  display:flex;
+  align-items:center;
 }
 
 nav a{
-color:white;
-text-decoration:none;
-margin:0 15px;
-font-weight:bold;
-position:relative;
+  color:white;
+  text-decoration:none;
+  margin:0 15px;
+  font-weight:bold;
+  position:relative;
 }
 
 nav a::after{
-content:"";
-position:absolute;
-width:0%;
-height:2px;
-background:#25D366;
-left:0;
-bottom:-5px;
-transition:0.3s;
+  content:"";
+  position:absolute;
+  width:0%;
+  height:2px;
+  background:#25D366;
+  left:0;
+  bottom:-5px;
+  transition:0.3s;
 }
 
 nav a:hover::after{
-width:100%;
+  width:100%;
 }
 
 nav a:hover{
-color:#25D366;
+  color:#25D366;
 }
 
 /* MOBILE MENU */
-
 .menu-toggle{
-display:none;
-font-size:28px;
-color:white;
-cursor:pointer;
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
 }
 
 @media(max-width:768px){
-
-nav{
-position:absolute;
-top:70px;
-right:0;
-background:#0d3b66;
-width:200px;
-flex-direction:column;
-display:none;
-padding:20px;
+  nav{
+    position:absolute;
+    top:90px;
+    right:0;
+    background:#0d3b66;
+    width:200px;
+    flex-direction:column;
+    display:none;
+    padding:20px;
+  }
+  nav a{
+    display:block;
+    margin:15px 0;
+  }
+  .menu-toggle{
+    display:block;
+  }
 }
 
-nav a{
-display:block;
-margin:15px 0;
+/* ===== HERO VIDEO ===== */
+.hero{
+  position:relative;
+  height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  text-align:center;
+  overflow:hidden;
 }
 
-.menu-toggle{
-display:block;
+.hero video{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
 }
 
+.hero .hero-content{
+  position:relative;
+  z-index:2;
 }
 
-/* ===== SECTIONS ===== */
-
-section{
-padding:60px 20px;
-text-align:center;
-}
-
-h2{
-color:#0d3b66;
+.hero h1{
+  font-size:42px;
+  margin-bottom:15px;
 }
 
 .btn{
-padding:12px 25px;
-background:#0d3b66;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
+  padding:12px 25px;
+  background:#25D366;
+  color:white;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+  font-weight:bold;
+  text-decoration:none;
 }
 
-input{
-width:100%;
-padding:10px;
-margin:10px 0;
-border-radius:5px;
-border:1px solid #ccc;
+/* ===== SECTIONS ===== */
+section{
+  padding:60px 20px;
+  text-align:center;
+}
+
+h2{
+  color:#0d3b66;
 }
 
 .owner-img{
-width:200px;
-height:200px;
-border-radius:50%;
-object-fit:cover;
-border:5px solid #0d3b66;
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  object-fit:cover;
+  border:5px solid #0d3b66;
+  margin-bottom:10px;
 }
 
 .project-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
 }
 
 .project-grid img{
-width:100%;
-height:200px;
-object-fit:cover;
-border-radius:10px;
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:10px;
+  transition:0.3s;
 }
 
+.project-grid img:hover{
+  transform:scale(1.05);
+}
+
+/* ADMIN PANEL */
 .admin-panel{
-background:#fff;
-padding:20px;
-border-radius:10px;
-margin-top:20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  margin-top:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
+  width:100%;
+  border-collapse:collapse;
+  margin-top:20px;
 }
 
 table th,table td{
-border:1px solid #ccc;
-padding:10px;
-text-align:center;
+  border:1px solid #ccc;
+  padding:10px;
+  text-align:center;
 }
 
 footer{
-background:#0d3b66;
-color:white;
-padding:20px;
-text-align:center;
+  background:#0d3b66;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+
+/* LIVE COUNTER */
+.counter{
+  font-size:36px;
+  font-weight:bold;
+  color:#0d3b66;
+  margin-top:20px;
+}
+
+/* LANGUAGE SELECT */
+.language-select{
+  margin:10px 0;
+  padding:8px;
+  border-radius:5px;
 }
 
 </style>
 </head>
-
 <body>
 
 <header>
-
 <div class="logo-box">
-<img src=" https://github.com/PaswanengineeringServices/pes-website/blob/main/PES%20new%20logo.png ">
+  <img src="https://drive.google.com/uc?export=view&id=1kAxxYPnKMK7pzHDfQntk6Q9yx3A8Gh2Q" alt="PES Logo">
 </div>
 
 <nav id="navMenu">
-<a href="#about">About</a>
-<a href="#projects">Projects</a>
-<a href="#register">Register</a>
-<a href="#admin">Admin</a>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#register">Register</a>
+  <a href="#admin">Admin</a>
 </nav>
 
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
 </header>
+
+<!-- HERO VIDEO -->
+<section class="hero">
+<video autoplay muted loop>
+  <source src="https://drive.google.com/uc?export=view&id=1hR5hJ4video_example" type="video/mp4">
+</video>
+<div class="hero-content">
+<h1>Paswan Engineering Services</h1>
+<p>Mechanical • Pipeline • Industrial Experts</p>
+<a href="#register" class="btn">Get Quotation</a>
+</div>
+</section>
 
 <section id="about">
 <h2>Founder</h2>
-<img src="Pes Owner.jpg" class="owner-img">
+<img src="https://drive.google.com/uc?export=view&id=1hYUp-MxnYqNVtRNKygXMM7bSLqzKLIMK" class="owner-img" alt="Founder">
 <h3>Atul Kumar Paswan</h3>
 <p>Mechanical • Pipeline • Industrial Experts</p>
+
+<!-- Language selector -->
+<select class="language-select" onchange="changeLanguage(this.value)">
+  <option value="en">English</option>
+  <option value="hi">हिन्दी</option>
+</select>
+
 </section>
 
 <section id="projects">
 <h2>Our Projects</h2>
 <div class="project-grid">
-<img src="Pcs 1.jpg">
-<img src="pcs2.jpg">
-<img src="pcs3.jpg">
-<img src="PCS 4.jpg">
+<img src="https://drive.google.com/uc?export=view&id=1daaS-GojlhcqdUJ5AKqFQL0OYJIu26X4">
+<img src="https://drive.google.com/uc?export=view&id=1t3AZQhGq6TK4rEBsSJQoZ91IEg-5t0ik">
+<img src="https://drive.google.com/uc?export=view&id=1jffwQ-a1e34_ZDDHkbCTnnYP9x8XTlsq">
+<img src="https://drive.google.com/uc?export=view&id=1smy2QSS5UXsezygEFlN-6x3cgeozRcBa">
 </div>
+
+<!-- Live project counter -->
+<p class="counter" id="projectCounter">Projects Completed: 0</p>
 </section>
 
 <section id="register">
 <h2>Worker Registration</h2>
-
 <input type="text" id="name" placeholder="Full Name">
 <input type="text" id="mobile" placeholder="Mobile Number">
 <input type="text" id="skill" placeholder="Skill">
-
 <button class="btn" onclick="registerWorker()">Submit</button>
+
+<!-- Online payment placeholder -->
+<a href="#" class="btn" style="margin-top:10px;">Pay Online</a>
 </section>
 
 <section id="admin">
 <h2>Admin Panel</h2>
-
 <div class="admin-panel">
 <button class="btn" onclick="loadWorkers()">Load Workers</button>
-
 <table>
 <thead>
 <tr>
@@ -245,7 +296,6 @@ text-align:center;
 </thead>
 <tbody id="workerTable"></tbody>
 </table>
-
 </div>
 </section>
 
@@ -254,60 +304,63 @@ text-align:center;
 </footer>
 
 <script>
-
 function toggleMenu(){
-let nav=document.getElementById("navMenu");
-if(nav.style.display==="flex"){
-nav.style.display="none";
-}else{
-nav.style.display="flex";
-nav.style.flexDirection="column";
-}
+  let nav=document.getElementById("navMenu");
+  if(nav.style.display==="flex"){
+    nav.style.display="none";
+  }else{
+    nav.style.display="flex";
+    nav.style.flexDirection="column";
+  }
 }
 
+// Worker Registration
 function registerWorker(){
-
-let name=document.getElementById("name").value;
-let mobile=document.getElementById("mobile").value;
-let skill=document.getElementById("skill").value;
-
-if(name=="" || mobile=="" || skill==""){
-alert("Please fill all fields");
-return;
+  let name=document.getElementById("name").value;
+  let mobile=document.getElementById("mobile").value;
+  let skill=document.getElementById("skill").value;
+  if(name=="" || mobile=="" || skill==""){
+    alert("Please fill all fields");
+    return;
+  }
+  let workers=JSON.parse(localStorage.getItem("workers")) || [];
+  workers.push({name,mobile,skill});
+  localStorage.setItem("workers",JSON.stringify(workers));
+  alert("Worker Registered Successfully");
+  document.getElementById("name").value="";
+  document.getElementById("mobile").value="";
+  document.getElementById("skill").value="";
 }
 
-let workers=JSON.parse(localStorage.getItem("workers")) || [];
-
-workers.push({name,mobile,skill});
-localStorage.setItem("workers",JSON.stringify(workers));
-
-alert("Worker Registered Successfully");
-
-document.getElementById("name").value="";
-document.getElementById("mobile").value="";
-document.getElementById("skill").value="";
-}
-
+// Load Workers for Admin
 function loadWorkers(){
-
-let workers=JSON.parse(localStorage.getItem("workers")) || [];
-
-let table=document.getElementById("workerTable");
-table.innerHTML="";
-
-workers.forEach(w=>{
-table.innerHTML+=`
-<tr>
-<td>${w.name}</td>
-<td>${w.mobile}</td>
-<td>${w.skill}</td>
-</tr>
-`;
-});
-
+  let workers=JSON.parse(localStorage.getItem("workers")) || [];
+  let table=document.getElementById("workerTable");
+  table.innerHTML="";
+  workers.forEach(w=>{
+    table.innerHTML+=`
+    <tr>
+      <td>${w.name}</td>
+      <td>${w.mobile}</td>
+      <td>${w.skill}</td>
+    </tr>`;
+  });
 }
 
-</script>
+// Live Project Counter Example
+let projectCount=4; // Change according to projects
+document.getElementById("projectCounter").innerText="Projects Completed: "+projectCount;
 
+// Multi-language demo
+function changeLanguage(lang){
+  if(lang==="hi"){
+    document.querySelector(".hero-content h1").innerText="पासवान इंजीनियरिंग सर्विसेज";
+    document.querySelector(".hero-content p").innerText="मैकेनिकल • पाइपलाइन • इंडस्ट्रियल एक्सपर्ट्स";
+  }else{
+    document.querySelector(".hero-content h1").innerText="Paswan Engineering Services";
+    document.querySelector(".hero-content p").innerText="Mechanical • Pipeline • Industrial Experts";
+  }
+}
+</script>
 </body>
 </html>
