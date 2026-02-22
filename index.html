@@ -6,139 +6,123 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 <style>
-  :root { --primary: #0d3b66; --secondary: #25D366; --light-bg: #f4f7fa; }
-  body { margin:0; font-family:'Segoe UI', sans-serif; background: var(--light-bg); color:#333; scroll-behavior: smooth; overflow-x: hidden; }
+  :root { --p: #0d3b66; --s: #25D366; --bg: #f4f7fa; }
+  body { margin:0; font-family:'Segoe UI', sans-serif; background: var(--bg); overflow-x: hidden; scroll-behavior: smooth; }
   
-  /* Header Styles: Bada Menu Left Mein */
-  header { 
-    background: rgba(13, 59, 102, 0.98); 
-    padding: 10px 5%; 
-    display: flex; 
-    align-items: center; 
-    position: sticky; 
-    top: 0; 
-    z-index: 1000; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  }
-  
-  .nav-toggle { 
-    font-size: 38px; /* Bada Size */
-    color: var(--secondary); 
-    cursor: pointer; 
-    margin-right: 15px; 
-  }
-
-  .logo-box img { height: 50px; border-radius: 5px; background: white; padding: 2px; }
-
-  nav { 
-    display: none; flex-direction: column; position: absolute; 
-    top: 70px; left: 0; width: 100%; background: var(--primary); 
-    padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.1);
-  }
+  /* Header */
+  header { background: var(--p); padding: 10px 5%; display: flex; align-items: center; position: sticky; top: 0; z-index: 1000; }
+  .nav-toggle { font-size: 35px; color: var(--s); cursor: pointer; margin-right: 15px; }
+  .logo-box img { height: 45px; background: white; padding: 2px; border-radius: 5px; }
+  nav { display: none; flex-direction: column; position: absolute; top: 65px; left: 0; width: 100%; background: var(--p); text-align: center; }
   nav.active { display: flex; }
-  nav a { color: white; text-decoration: none; padding: 15px; font-weight: 600; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  nav a { color: white; text-decoration: none; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
-  /* Sections & Cards */
-  section { padding: 60px 8%; text-align: center; }
-  .section-title { font-size: 2.2rem; color: var(--primary); margin-bottom: 40px; font-weight: 800; position: relative; }
-  .section-title::after { content:''; width: 60px; height: 4px; background: var(--secondary); position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); }
+  /* Sections */
+  section { padding: 50px 5%; text-align: center; }
+  .section-title { font-size: 24px; color: var(--p); margin-bottom: 30px; font-weight: 800; border-bottom: 3px solid var(--s); display: inline-block; }
 
-  .glass-card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto; }
+  /* Hero */
+  .hero { height: 60vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pcs2.jpg') center/cover; display: flex; align-items: center; justify-content: center; color: white; }
+
+  /* Identity: Uniform & Card Side-by-Side */
+  .id-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+  .id-box { width: 45%; max-width: 250px; background: white; padding: 10px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+  .id-box img { width: 100%; border-radius: 5px; }
+  .id-box p { font-size: 12px; margin: 5px 0; font-weight: bold; }
+
+  /* Services & Projects Grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+  .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+  /* Floating Buttons */
+  .contact-tools { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
+  .tool-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
   
-  .hero { height: 80vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('pcs2.jpg') no-repeat center center/cover; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
-  .pes-badge { font-size: 1.5rem; font-weight: 900; background: var(--secondary); padding: 5px 25px; border-radius: 4px; color: var(--primary); letter-spacing: 5px; }
-
-  /* Forms & Tables */
-  input { width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
-  .btn { padding: 15px 35px; background: var(--secondary); color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; transition: 0.3s; }
-  .btn:hover { transform: translateY(-3px); }
-
-  .contact-tools { position: fixed; bottom: 25px; right: 25px; z-index: 1000; display: flex; flex-direction: column; gap: 12px; }
-  .tool-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-decoration: none; font-size: 22px; color: white; }
-  .wa { background: #25d366; } .call { background: var(--primary); }
-
-  table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
-  th, td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
-  th { background: var(--primary); color: white; }
-
-  footer { background: #071c2f; color: white; padding: 40px 10%; text-align: center; }
-  footer a { color: var(--secondary); text-decoration: none; }
+  footer { background: #071c2f; color: white; padding: 30px; text-align: center; font-size: 14px; }
 </style>
 </head>
 <body>
 
 <div class="contact-tools">
-  <a href="tel:+919771860886" class="tool-btn call">📞</a>
-  <a href="https://wa.me/919771860886" class="tool-btn wa" target="_blank">💬</a>
+  <a href="tel:+919771860886" class="tool-btn" style="background:var(--p);">📞</a>
+  <a href="https://wa.me/919771860886" class="tool-btn" style="background:#25d366;">💬</a>
 </div>
 
 <header>
   <div class="nav-toggle" onclick="toggleMenu()">☰</div>
   <div class="logo-box"><img src="pes logo1.png" alt="PES"></div>
   <nav id="navMenu">
-    <a href="#identity" onclick="toggleMenu()">Our Identity</a>
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#projects" onclick="toggleMenu()">Our Work</a>
+    <a href="#identity" onclick="toggleMenu()">Identity</a>
     <a href="#register" onclick="toggleMenu()">Worker Portal</a>
-    <a href="#visiting-card" onclick="toggleMenu()">Visiting Card</a>
-    <a href="#admin" onclick="toggleMenu()">Admin Panel</a>
   </nav>
 </header>
 
 <section class="hero">
-  <div data-aos="zoom-in">
-    <div class="pes-badge">PES</div>
-    <h1 style="font-size: 2.8rem;">Paswan Engineering Services</h1>
-    <p>Safety • Quality • Professionalism</p>
+  <div>
+    <h1 style="font-size: 32px; margin:0;">Paswan Engineering Services</h1>
+    <p>Mechanical & Piping Experts</p>
   </div>
 </section>
 
-<section id="identity">
-  <h2 class="section-title" data-aos="fade-up">Our Identity</h2>
-  <div class="glass-card" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px;">
-    <div style="flex: 1; min-width: 280px;">
-      <img src="uniform.jpg" style="width: 100%; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+<section id="services">
+  <h2 class="section-title">Industrial Services</h2>
+  <div class="grid">
+    <div class="card"><h3>Industrial Piping</h3><p>Steam & Chemical Pipelines.</p></div>
+    <div class="card"><h3>Fabrication</h3><p>Heavy Structural Work.</p></div>
+    <div class="card"><h3>Maintenance</h3><p>Plant Shutdown Services.</p></div>
+  </div>
+</section>
+
+<section id="identity" style="background: #eee;">
+  <h2 class="section-title">Identity & Brand</h2>
+  <div class="id-container">
+    <div class="id-box" data-aos="fade-right">
+      <img src="uniform.jpg" alt="PES Uniform">
+      <p>Official Uniform</p>
     </div>
-    <div style="flex: 1; min-width: 280px; text-align: left;">
-      <h3 style="color: var(--primary);">Standard Professionalism</h3>
-      <p>Humare workers Navy Blue aur Grey official uniform mein safety strips ke saath kaam karte hain. Yeh humari discipline aur quality ko darshata hai.</p>
-      <p><b>PES Uniform Features:</b><br>✅ High-Visibility Strips<br>✅ Professional Logo Branding<br>✅ Industrial Safety Grade</p>
+    <div class="id-box" data-aos="fade-left">
+      <img src="visiting card.jpg" alt="PES Card">
+      <p>Business Card</p>
     </div>
+  </div>
+  <div style="margin-top:20px;">
+    <a href="visiting card.jpg" download class="tool-btn" style="background:var(--p); border-radius:10px; width:auto; padding:0 20px; display:inline-flex;">Download Card</a>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">Our Projects</h2>
+  <div class="grid">
+    <img src="Pcs 1.jpg" style="width:100%; border-radius:10px;">
+    <img src="pcs2.jpg" style="width:100%; border-radius:10px;">
+    <img src="pcs3.jpg" style="width:100%; border-radius:10px;">
+    <img src="PCS 4.jpg" style="width:100%; border-radius:10px;">
   </div>
 </section>
 
 <section id="register">
   <h2 class="section-title">Worker Portal</h2>
-  <div class="glass-card" data-aos="fade-up">
-    <input type="text" id="name" placeholder="Worker Full Name">
-    <input type="text" id="mobile" placeholder="Mobile Number">
-    <input type="text" id="skill" placeholder="Skill (Fitter, Welder, etc.)">
-    <input type="number" id="exp" placeholder="Experience (in Years)">
-    <button class="btn" onclick="registerWorker()" style="width:100%;">Submit Application</button>
-  </div>
-</section>
-
-<section id="visiting-card" style="background: white;">
-  <h2 class="section-title">Digital Business Card</h2>
-  <div class="glass-card" data-aos="zoom-in" style="max-width:500px;">
-    <img src="visiting card.jpg" style="width:100%; border-radius:10px;">
-    <br><br>
-    <a href="visiting card.jpg" download class="btn" style="background:var(--primary);">Download Card</a>
+  <div style="max-width:400px; margin:0 auto; background:white; padding:20px; border-radius:15px;">
+    <input type="text" id="name" placeholder="Name">
+    <input type="text" id="mobile" placeholder="Mobile">
+    <input type="text" id="skill" placeholder="Skill">
+    <input type="number" id="exp" placeholder="Experience (Yrs)">
+    <button onclick="registerWorker()" style="width:100%; padding:15px; background:var(--s); border:none; color:white; border-radius:10px; font-weight:bold;">Register Now</button>
   </div>
 </section>
 
 <section id="admin">
-  <h2 class="section-title">Database Access</h2>
-  <div style="margin-bottom: 20px;">
-    <button class="btn" onclick="showPublic()">Public View</button>
-    <button class="btn" style="background:var(--primary);" onclick="showPrivate()">Admin Login</button>
-  </div>
-  <div id="tableContainer" style="overflow-x:auto;"></div>
+  <button onclick="showPrivate()" style="background:none; border:none; color:#ccc;">Admin Login</button>
+  <div id="tableContainer" style="margin-top:20px; overflow-x:auto;"></div>
 </section>
 
 <footer>
   <p><b>Paswan Engineering Services</b></p>
-  <p>📧 <a href="mailto:engineeringservicespes@gmail.com">engineeringservicespes@gmail.com</a></p>
-  <p>📞 <a href="tel:+919771860886">+91 9771860886</a></p>
-  <p style="margin-top:20px; font-size:11px; opacity:0.5;">© 2026 PES | Quality First</p>
+  <p>📧 engineeringservicespes@gmail.com</p>
+  <p>📞 +91 9771860886</p>
+  <p style="opacity:0.5; font-size:10px;">© 2026 PES</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -151,7 +135,7 @@
     const mobile = document.getElementById("mobile").value;
     const skill = document.getElementById("skill").value;
     const exp = document.getElementById("exp").value;
-    if(!name || !mobile || !skill || !exp) { alert("Sabh bharna zaroori hai!"); return; }
+    if(!name || !mobile) { alert("Sabh bharna zaroori hai!"); return; }
     let db = JSON.parse(localStorage.getItem("pes_secure_db")) || [];
     db.push({name, mobile, skill, exp});
     localStorage.setItem("pes_secure_db", JSON.stringify(db));
@@ -159,25 +143,16 @@
     location.reload();
   }
 
-  function showPublic() {
-    let db = JSON.parse(localStorage.getItem("pes_secure_db")) || [];
-    let html = `<table><tr><th># No.</th><th>Name</th><th>Skill</th></tr>`;
-    html += db.map((w, i) => `<tr><td>${i+1}</td><td>${w.name}</td><td>${w.skill}</td></tr>`).join('');
-    html += `</table>`;
-    document.getElementById("tableContainer").innerHTML = html;
-  }
-
   function showPrivate() {
-    const pass = prompt("Enter Admin Password:");
+    const pass = prompt("Password:");
     if(pass === "pes123") {
         let db = JSON.parse(localStorage.getItem("pes_secure_db")) || [];
-        let html = `<table style="background:#fff3e0;"><tr><th># No.</th><th>Name</th><th>Mobile</th><th>Skill</th><th>Exp</th></tr>`;
-        html += db.map((w, i) => `<tr><td>${i+1}</td><td><b>${w.name}</b></td><td>${w.mobile}</td><td>${w.skill}</td><td>${w.exp} Yrs</td></tr>`).join('');
+        let html = `<table border="1" style="width:100%; background:white;"><tr><th>#</th><th>Name</th><th>Mobile</th><th>Exp</th></tr>`;
+        html += db.map((w, i) => `<tr><td>${i+1}</td><td>${w.name}</td><td>${w.mobile}</td><td>${w.exp}</td></tr>`).join('');
         html += `</table>`;
         document.getElementById("tableContainer").innerHTML = html;
-    } else { alert("Wrong Password!"); }
+    } else { alert("Wrong!"); }
   }
-  window.onload = showPublic;
 </script>
 </body>
 </html>
