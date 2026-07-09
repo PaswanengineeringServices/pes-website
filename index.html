@@ -2,48 +2,61 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PES - Paswan Engineering Services</title>
+<title>Paswan Engineering Services</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 <style>
   :root { --p: #0d3b66; --s: #25D366; --bg: #f4f7fa; }
   body { margin:0; font-family:'Segoe UI', sans-serif; background: var(--bg); overflow-x: hidden; scroll-behavior: smooth; }
   
-  header { background: var(--p); padding: 10px 5%; display: flex; align-items: center; position: sticky; top: 0; z-index: 1000; }
-  .nav-toggle { font-size: 38px; color: var(--s); cursor: pointer; margin-right: 15px; }
-  .logo-box img { height: 45px; background: white; padding: 2px; border-radius: 5px; }
-  nav { display: none; flex-direction: column; position: absolute; top: 65px; left: 0; width: 100%; background: var(--p); text-align: center; }
+  header { background: var(--p); padding: 12px 5%; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+  .nav-toggle { font-size: 28px; color: white; cursor: pointer; }
+  .logo-box img { height: 40px; background: white; padding: 4px; border-radius: 6px; display: block; }
+  nav { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; width: 100%; background: var(--p); text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
   nav.active { display: flex; }
-  nav a { color: white; text-decoration: none; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: bold; }
+  nav a { color: white; text-decoration: none; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: bold; font-size: 15px; }
 
-  /* Hero & Slideshow */
-  .hero { height: 60vh; position: relative; display: flex; align-items: center; justify-content: center; color: white; text-align: center; overflow: hidden; }
-  .slide { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1s ease-in-out; z-index: -1; }
+  /* Hero & Dynamic Slideshow */
+  .hero { height: 55vh; position: relative; display: flex; align-items: center; justify-content: center; color: white; text-align: center; overflow: hidden; }
+  .slide { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.2s ease-in-out; z-index: -1; }
   .slide.active { opacity: 1; }
-  .pes-badge { font-size: 1.2rem; font-weight: 900; background: var(--s); padding: 5px 20px; border-radius: 4px; color: var(--p); letter-spacing: 5px; margin-bottom: 15px; display: inline-block; }
+  .brand-badge { font-size: 1.1rem; font-weight: 900; background: var(--s); padding: 6px 22px; border-radius: 4px; color: var(--p); letter-spacing: 4px; margin-bottom: 12px; display: inline-block; }
 
-  section { padding: 40px 5%; text-align: center; }
-  .section-title { font-size: 24px; color: var(--p); margin-bottom: 25px; font-weight: 800; border-bottom: 3px solid var(--s); display: inline-block; }
+  section { padding: 45px 5%; text-align: center; }
+  .section-title { font-size: 22px; color: var(--p); margin-bottom: 25px; font-weight: 800; border-bottom: 3px solid var(--s); display: inline-block; padding-bottom: 5px; }
 
-  /* MD Section */
-  .leader-card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 350px; margin: 0 auto; }
-  .leader-img { width: 140px; height: 140px; border-radius: 50%; border: 4px solid var(--s); object-fit: cover; margin-bottom: 10px; }
+  /* MD Profile Layout */
+  .leader-card { background: white; padding: 30px 20px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.06); max-width: 320px; margin: 0 auto; }
+  .leader-img { width: 130px; height: 130px; border-radius: 50%; border: 4px solid var(--s); object-fit: cover; margin-bottom: 15px; }
 
-  /* Simple Project Photo Gallery */
-  .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 20px; }
-  .gallery-grid img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; border: 2px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+  /* Upgraded Services Section */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 10px; }
+  .service-box { background: white; padding: 20px 15px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-top: 4px solid var(--p); text-align: left; }
+  .service-box h4 { margin: 0 0 8px 0; color: var(--p); font-size: 16px; font-weight: 700; }
+  .service-box p { margin: 0; font-size: 12px; color: #555; line-height: 1.5; }
 
-  /* Identity Side-by-Side */
-  .id-row { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
-  .id-item { width: 47%; background: white; padding: 8px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
-  .id-item img { width: 100%; border-radius: 5px; height: 110px; object-fit: cover; }
-  .id-item p { font-size: 10px; font-weight: bold; margin: 5px 0; color: var(--p); }
+  /* Dynamic Grids */
+  .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
+  .gallery-grid img { width: 100%; height: 150px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
-  .contact-tools { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
-  .tool-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; }
+  .id-row { display: flex; justify-content: center; gap: 12px; margin-top: 10px; }
+  .id-item { width: 48%; background: white; padding: 10px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .id-item img { width: 100%; border-radius: 8px; height: 120px; object-fit: cover; }
+  .id-item p { font-size: 12px; font-weight: bold; margin: 8px 0 0 0; color: var(--p); }
+
+  /* Forms */
+  .form-container { max-width: 360px; margin: 0 auto; background: white; padding: 25px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+  input { width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #e2e8f0; border-radius: 8px; box-sizing: border-box; font-size: 14px; background: #f8fafc; }
+  input:focus { outline: none; border-color: var(--p); background: #fff; }
+  .submit-btn { width: 100%; padding: 14px; background: var(--s); border: none; color: white; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; transition: background 0.2s; }
   
-  footer { background: #071c2f; color: white; padding: 30px; text-align: center; font-size: 13px; }
-  input { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+  /* Quick Connect Actions */
+  .contact-tools { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 12px; }
+  .tool-btn { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; box-shadow: 0 4px 14px rgba(0,0,0,0.25); text-decoration: none; }
+  
+  /* Modern Footer with Details */
+  footer { background: #071c2f; color: white; padding: 35px 20px; text-align: center; font-size: 13px; line-height: 1.6; }
+  footer p { margin: 6px 0; }
+  .gov-reg { margin: 15px 0; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; display: inline-block; font-size: 11px; text-align: left; border-left: 3px solid var(--s); }
 </style>
 </head>
 <body>
@@ -57,53 +70,76 @@
   <div class="nav-toggle" onclick="toggleMenu()">☰</div>
   <div class="logo-box"><img src="pes logo1.png" alt="PES"></div>
   <nav id="navMenu">
-    <a href="#about" onclick="toggleMenu()">Founder</a>
-    <a href="#projects" onclick="toggleMenu()">Work Gallery</a>
-    <a href="#identity" onclick="toggleMenu()">Identity</a>
-    <a href="#register" onclick="toggleMenu()">Register</a>
+    <a href="#about" onclick="toggleMenu()">Founder & MD</a>
+    <a href="#services" onclick="toggleMenu()">Our Expertise</a>
+    <a href="#projects" onclick="toggleMenu()">Our Gallery</a>
+    <a href="#identity" onclick="toggleMenu()">Brand Identity</a>
+    <a href="#register" onclick="toggleMenu()">Worker Registration</a>
   </nav>
 </header>
 
 <section class="hero">
-  <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pcs2.jpg');"></div>
-  <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Pcs 1.jpg');"></div>
-  <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pcs3.jpg');"></div>
-  <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('PCS 4.jpg');"></div>
+  <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('pcs2.jpg');"></div>
+  <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('Pcs 1.jpg');"></div>
+  <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('pcs3.jpg');"></div>
+  <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('PCS 4.jpg');"></div>
   
-  <div style="z-index: 10;">
-    <div class="pes-badge">PES</div>
-    <h1 style="font-size: 28px; margin:0;">Paswan Engineering Services</h1>
-    <p style="color:var(--s); font-weight:bold;">Quality • Safety • Integrity</p>
+  <div style="z-index: 10; padding: 0 15px;">
+    <div class="brand-badge">PES</div>
+    <h1 style="font-size: 26px; margin:0; font-weight: 800; letter-spacing: 0.5px;">Paswan Engineering Services</h1>
+    <p style="color:var(--s); font-weight:bold; margin-top: 8px; font-size: 14px; letter-spacing: 1px;">Quality • Safety • Integrity</p>
   </div>
 </section>
 
 <section id="about">
   <h2 class="section-title">Managing Director</h2>
-  <div class="leader-card" data-aos="fade-up">
+  <div class="leader-card">
     <img src="Pes Owner.jpg" class="leader-img" alt="Atul Kumar Paswan">
-    <h3 style="margin:5px 0; color:var(--p);">Atul Kumar Paswan</h3>
-    <p style="margin:0; font-weight:bold; color:var(--s);">Founder & MD</p>
+    <h3 style="margin:5px 0; color:var(--p); font-size: 20px;">Atul Kumar Paswan</h3>
+    <p style="margin:0; font-weight:bold; color:var(--s); font-size: 14px;">Founder & MD</p>
   </div>
 </section>
 
-<section id="projects" style="background: white;">
+<section id="services" style="background: #fff;">
+  <h2 class="section-title">Working Concepts</h2>
+  <div class="services-grid">
+    <div class="service-box">
+      <h4>Paint Circulation System (PCS)</h4>
+      <p>Specialized turnkey automotive and industrial paint circulation solutions and operations.</p>
+    </div>
+    <div class="service-box">
+      <h4>Piping & Fabrication</h4>
+      <p>High-standard heavy industrial pipe fabrication, installation, and routing management.</p>
+    </div>
+    <div class="service-box">
+      <h4>Precision Tubing</h4>
+      <p>Expert layout and joint execution for high-pressure hydraulic and instrumentation tubing systems.</p>
+    </div>
+    <div class="service-box">
+      <h4>Structural & Carbon Welding</h4>
+      <p>Certified industrial structural welding, alignment, and robust erection support.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
   <h2 class="section-title">Our Recent Projects</h2>
   <div class="gallery-grid">
-    <img src="Pcs 1.jpg" data-aos="zoom-in">
-    <img src="pcs2.jpg" data-aos="zoom-in">
-    <img src="pcs3.jpg" data-aos="zoom-in">
-    <img src="PCS 4.jpg" data-aos="zoom-in">
+    <img src="Pcs 1.jpg" alt="Project Image 1">
+    <img src="pcs2.jpg" alt="Project Image 2">
+    <img src="pcs3.jpg" alt="Project Image 3">
+    <img src="PCS 4.jpg" alt="Project Image 4">
   </div>
 </section>
 
-<section id="identity">
+<section id="identity" style="background: white;">
   <h2 class="section-title">Brand Identity</h2>
   <div class="id-row">
-    <div class="id-item" data-aos="fade-right">
+    <div class="id-item">
       <img src="uniform.jpg" alt="PES Uniform">
       <p>Official Uniform</p>
     </div>
-    <div class="id-item" data-aos="fade-left">
+    <div class="id-item">
       <img src="visiting card.jpg" alt="PES Card">
       <p>Business Card</p>
     </div>
@@ -112,63 +148,45 @@
 
 <section id="register">
   <h2 class="section-title">Worker Portal</h2>
-  <div style="max-width:350px; margin:0 auto; background:white; padding:20px; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.05);">
-    <input type="text" id="name" placeholder="Full Name">
-    <input type="text" id="mobile" placeholder="Mobile Number (+91)">
-    <input type="text" id="skill" placeholder="Skill (Welder/Fitter)">
-    <input type="number" id="exp" placeholder="Experience (Yrs)">
-    <button onclick="registerWorker()" style="width:100%; padding:12px; background:var(--s); border:none; color:white; border-radius:8px; font-weight:bold;">SUBMIT APPLICATION</button>
+  <div class="form-container">
+    <form action="https://formspree.io/f/YOUR_ID_HERE" method="POST">
+      <input type="text" name="Name" placeholder="Full Name" required>
+      <input type="tel" name="Mobile" placeholder="Mobile Number (+91)" required>
+      <input type="text" name="Skill" placeholder="Skill (Welder/Fitter)" required>
+      <input type="number" name="Experience" placeholder="Experience (Yrs)" required>
+      <button type="submit" class="submit-btn">SUBMIT APPLICATION</button>
+    </form>
   </div>
 </section>
 
-<section id="admin">
-  <button onclick="showPrivate()" style="background:none; border:none; color:#ccc; font-size:10px;">ADMIN LOGIN</button>
-  <div id="tableContainer" style="margin-top:15px; overflow-x:auto;"></div>
-</section>
-
 <footer>
-  <p><b>Paswan Engineering Services</b></p>
-  <p>📧 engineeringservicespes@gmail.com</p>
+  <p style="font-size: 16px; color: var(--s); font-weight: bold;">Paswan Engineering Services</p>
+  <p>📍 Nijampur, Siwan, Bihar - 841227, India</p>
+  <p>📧 Pes.engg.com@gmail.com</p>
   <p>📞 +91 9771860886</p>
-  <p style="opacity:0.4; font-size:10px; margin-top:15px;">© 2026 PES OFFICIAL</p>
+  
+  <div class="gov-reg">
+    <div><b>UDYAM:</b> BR-35-0053830</div>
+    <div><b>GSTIN:</b> 10AABCP4257G1Z8</div>
+  </div>
+  
+  <p style="opacity: 0.3; font-size: 11px; margin-top: 20px;">© 2026 PES OFFICIAL • All Rights Reserved</p>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-  AOS.init();
-  function toggleMenu() { document.getElementById("navMenu").classList.toggle("active"); }
-
-  // Slideshow Logic
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-  setInterval(() => {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }, 3500);
-
-  function registerWorker() {
-    const name = document.getElementById("name").value;
-    const mobile = document.getElementById("mobile").value;
-    const skill = document.getElementById("skill").value;
-    const exp = document.getElementById("exp").value;
-    if(!name || !mobile) { alert("Details bhariye!"); return; }
-    let db = JSON.parse(localStorage.getItem("pes_secure_db")) || [];
-    db.push({name, mobile, skill, exp});
-    localStorage.setItem("pes_secure_db", JSON.stringify(db));
-    alert("Success!"); location.reload();
+  function toggleMenu() { 
+    document.getElementById("navMenu").classList.toggle("active"); 
   }
 
-  function showPrivate() {
-    const pass = prompt("Password:");
-    if(pass === "pes123") {
-        let db = JSON.parse(localStorage.getItem("pes_secure_db")) || [];
-        let html = `<table border="1" style="width:100%; background:white; font-size:12px; border-collapse:collapse;">
-          <tr style="background:#eee;"><th>#</th><th>Name</th><th>Mobile</th><th>Exp</th></tr>`;
-        html += db.map((w, i) => `<tr><td>${i+1}</td><td>${w.name}</td><td>${w.mobile}</td><td>${w.exp}</td></tr>`).join('');
-        html += `</table>`;
-        document.getElementById("tableContainer").innerHTML = html;
-    } else { alert("Wrong!"); }
+  // Automatic Slideshow
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  if(slides.length > 0) {
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 4000);
   }
 </script>
 </body>
